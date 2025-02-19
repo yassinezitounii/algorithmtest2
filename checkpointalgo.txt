@@ -1,0 +1,71 @@
+// problem I
+ALGORITHM dot_product
+VAR
+    v1 : ARRAY[1..3] OF REAL := [1.0, 2.0, 3.0];  (* Vector 1 *)
+    v2 : ARRAY[1..3] OF REAL := [4.0, 5.0, 6.0];  (* Vector 2 *)
+    ps : REAL := 0.0;  (* Dot product result *)
+    n, i : INTEGER;
+
+PROCEDURE dot_product(v1: ARRAY OF REAL; v2: ARRAY OF REAL; n: INTEGER; VAR ps: REAL)
+BEGIN
+    ps := 0.0;
+    FOR i := 1 TO n DO
+        ps := ps + (v1[i] * v2[i]);
+    END_FOR
+END
+
+(* Now checking for orthogonality with multiple pairs of vectors *)
+VAR
+    vectors : ARRAY[1..3, 1..3] OF REAL := [[1.0, 2.0, 3.0], [4.0, 5.0, 6.0], [1.0, -2.0, 1.0]];
+    orthogonal : BOOLEAN;
+    n, i, j : INTEGER;
+BEGIN
+    FOR i := 1 TO 2 DO  (* Checking pairs of vectors *)
+        FOR j := i + 1 TO 3 DO
+            dot_product(vectors[i], vectors[j], 3, ps);
+            IF ps = 0 THEN
+                orthogonal := TRUE;
+                Write("Vectors ", i, " and ", j, " are orthogonal.");
+            ELSE
+                orthogonal := FALSE;
+                Write("Vectors ", i, " and ", j, " are not orthogonal.");
+            END_IF
+        END_FOR
+    END_FOR
+END
+// problem II 
+
+ALGORITHM dot_product
+VAR
+    v1 : ARRAY[1..3] OF REAL := [1.0, 2.0, 3.0];  (* Vector 1 *)
+    v2 : ARRAY[1..3] OF REAL := [4.0, 5.0, 6.0];  (* Vector 2 *)
+    ps : REAL := 0.0;  (* Dot product result *)
+    n, i : INTEGER;
+
+PROCEDURE dot_product(v1: ARRAY OF REAL; v2: ARRAY OF REAL; n: INTEGER; VAR ps: REAL)
+BEGIN
+    ps := 0.0;
+    FOR i := 1 TO n DO
+        ps := ps + (v1[i] * v2[i]);
+    END_FOR
+END
+
+(* Now checking for orthogonality with multiple pairs of vectors *)
+VAR
+    vectors : ARRAY[1..3, 1..3] OF REAL := [[1.0, 2.0, 3.0], [4.0, 5.0, 6.0], [1.0, -2.0, 1.0]];
+    orthogonal : BOOLEAN;
+    n, i, j : INTEGER;
+BEGIN
+    FOR i := 1 TO 2 DO  (* Checking pairs of vectors *)
+        FOR j := i + 1 TO 3 DO
+            dot_product(vectors[i], vectors[j], 3, ps);
+            IF ps = 0 THEN
+                orthogonal := TRUE;
+                Write("Vectors ", i, " and ", j, " are orthogonal.");
+            ELSE
+                orthogonal := FALSE;
+                Write("Vectors ", i, " and ", j, " are not orthogonal.");
+            END_IF
+        END_FOR
+    END_FOR
+END
